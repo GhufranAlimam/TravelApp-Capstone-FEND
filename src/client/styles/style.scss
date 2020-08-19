@@ -1,0 +1,176 @@
+$primary-color-black: #000;
+$secondary-color-white: #fff;
+$transparent-background: rgba(255, 255, 255, 0.5);
+$main-font: 'Oswald', sans-serif;
+$title-font:  'Playfair Display SC', serif;
+
+@mixin border($val){
+    @if $val == light {
+        border: 2.5px solid $primary-color-black;
+    }
+    @else if $val == thick {
+        border: 5px solid $primary-color-black;
+    }
+}
+body{
+    height: 100vh;
+    background-image: url(../imgs/background.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    box-sizing: border-box;
+}
+
+#app{
+    display: grid;
+    text-align:center;
+    margin: 0 auto;
+    color: $primary-color-black;
+    justify-content: center;
+    grid-gap: 2em;
+    font-size: 20px;
+    font-family: $main-font;
+} 
+
+.holder{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+} 
+
+.title{
+    border-bottom: 5px solid $primary-color-black;
+    padding: 5px;
+    color:$primary-color-black;
+    font-family: $title-font;
+    font-weight: 700;
+    font-size:1.2em;
+}
+
+.entry{
+    background: $transparent-background;
+    width: 100%;
+    height: 200px;
+    @include border(thick);
+}
+
+
+.headline{
+    font-size: 2.5em;
+    font-family: $title-font;
+    border-bottom: 5px solid $primary-color-black;
+    font-weight: 900;
+    color: $primary-color-black;
+}
+
+/*  Basic Styling To Override Default For Basic HTML Elements */
+label{
+    display:inline-block;
+    margin: 0 auto;
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+input{
+    display:block;
+    height: 60px;
+    width: 420px;
+    background: $transparent-background;
+    color: $primary-color-black;
+    font-size: 20px;
+    font-family: $main-font;
+    @include border(light);
+    margin: 0 auto;
+    padding-left: 10px;
+}
+
+button{
+    width: 435px;
+    margin-top: 20px;
+    padding: 10px 0;
+    background: $primary-color-black;
+    color: $secondary-color-white;
+    font-size: 26px;
+    font-family: $main-font;
+    @include border(light);
+    transition: all 0.2s;
+}
+
+button:hover{
+    background: $secondary-color-white;
+    color:$primary-color-black;
+    @include border(light);
+    cursor:pointer;
+}
+
+/* Reset style for HTML element on active to have no border*/
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+/* Style for Placeholder Text*/
+::placeholder { /* Firefox, Chrome, Opera */ 
+    color: $primary-color-black;
+    font-family: $main-font;
+    padding-left: 10px;
+} 
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
+    color: $primary-color-black;
+    font-family: $main-font;
+} 
+  
+::-ms-input-placeholder { /* Microsoft Edge */ 
+    color: $primary-color-black;
+    font-family: $main-font;
+}
+
+@media only screen and (min-width: 1650px){
+    body{
+        height: 90vh;
+    }
+    #app {
+        display: block;
+    } 
+    .date{
+        align-self: end;
+    }
+    #container{
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        width: 90%;
+        margin: 0 auto;
+        padding: 30px 0 50px 0;
+        justify-content: center;
+    
+    }
+
+    button{
+        height: 65px;
+        width: 420px;
+        margin-top: 0px;
+        padding: 0 0;
+        align-self: end;
+        justify-self: center
+    }
+
+    .headline {
+        padding-bottom: 10px;
+        border-bottom: 5px solid $primary-color-black;
+        font-weight: 900;
+    }
+
+    .holder{
+        width: 90%;
+    }
+
+    .entry{
+        height: 400px;
+    }
+
+    .title{
+        font-size:1.5em;
+    }
+}
