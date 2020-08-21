@@ -2,7 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// require("@babel/register")
 module.exports = {
     mode: "development",
     entry: './src/client/index.js',
@@ -21,7 +22,7 @@ module.exports = {
             },
             {
                 test: /\.jpg$/,
-                use: "file-loader"
+                loader: "file-loader"
             },
             {
                 test: /\.scss$/,
@@ -42,7 +43,7 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
-    }),
-    new BundleAnalyzerPlugin({generateStatsFile: true})
+    })
+        // new BundleAnalyzerPlugin({generateStatsFile: true})
     ]
 }

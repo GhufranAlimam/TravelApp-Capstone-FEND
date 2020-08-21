@@ -8,15 +8,14 @@ const cors = require("cors");
 const dotenv = require('dotenv');
 dotenv.config({path:path.join(__dirname,'../.env')});
 
-app.use(express.static("dist"))
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(express.static("dist"))
+const PORT = process.env.PORT || 8081;
 
-const PORT = process.env.PORT || 3000;
-
-app.get('/test', (req, res)=>{
-    res.send('dist/index.html')
+app.get('/', (req, res)=>{
+    res.status(200).send('./dist/index.html')
 })
 
 
