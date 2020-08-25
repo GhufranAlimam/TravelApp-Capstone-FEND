@@ -12,111 +12,116 @@ $title-font:  'Playfair Display SC', serif;
         border: 5px solid $primary-color-black;
     }
 }
+
 body{
     height: 100vh;
     background-image: url(../imgs/background.jpg);
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: cover;
+    background-size: 100%;
     box-sizing: border-box;
 }
 
 #app{
     display: grid;
     text-align:center;
-    margin: 0 auto;
+    // margin: 0 auto;
     color: $primary-color-black;
     justify-content: center;
-    grid-gap: 2em;
-    font-size: 20px;
+    grid-gap: 1em;
+    font-size: 1.27em;
     font-family: $main-font;
 } 
 
+#container {
+    text-align: center;
+    display: grid;
+}
 .holder{
-    display: flex;
-    flex-direction: column;
     margin: 0 auto;
 } 
 
 .title{
     border-bottom: 5px solid $primary-color-black;
-    padding: 5px;
+    padding: 0.2em;
     color:$primary-color-black;
     font-family: $title-font;
     font-weight: 700;
-    font-size:1.2em;
+    font-size: 1em;
 }
 
 .entry{
     background: $transparent-background;
-    width: 100%;
-    height: 300px;
+    width: 600px;
+    height: 100%;
     @include border(thick);
 }
-
 
 .headline{
     font-size: 2.5em;
     font-family: $title-font;
+    color: $primary-color-black;
     border-bottom: 5px solid $primary-color-black;
     font-weight: 900;
-    color: $primary-color-black;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
-label{
-    display:inline-block;
-    margin: 0 auto;
-    font-size: 27px;
-    margin-bottom: 10px;
-}
 
 input{
     display:block;
-    height: 60px;
-    width: 420px;
+    height: 3em;
+    width: 21em;
     background: $transparent-background;
     color: $primary-color-black;
-    font-size: 20px;
+    font-size: 1em;
     font-family: $main-font;
     @include border(light);
-    margin: 0 auto;
+    // margin: 0 auto;
     padding-left: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 1%;
 }
 
 button{
-    width: 435px;
-    margin-top: 20px;
-    padding: 10px 0;
+    width: 17em;
+    margin-top: 2%;
+    padding: 3% 0;
     background: $primary-color-black;
     color: $secondary-color-white;
-    font-size: 26px;
+    font-size: 1.3em;
     font-family: $main-font;
     @include border(light);
     transition: all 0.2s;
 }
+
 .trip-area{
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
 }
+
 #image{
-    background: red;
-    width: 40%;
+    width: 100%;
+    height: 50%;
+}
+
+img{
+    width: 100%;
     height: 100%;
 }
 
 #info{
-    background:blue;
-    width: 60%;
-    height: 100%;
+    width: 100%;
+    height: 40%;
 }
 
 #info p{
     margin: 0;
     text-align: left;
+    padding-left: 15px;
+    font-size: 1em;
 }
+
 button:hover{
     background: $secondary-color-white;
     color:$primary-color-black;
@@ -124,6 +129,15 @@ button:hover{
     cursor:pointer;
 }
 
+#error{
+    color: rgb(88, 3, 3);
+    background-color: rgb(248, 151, 175);
+}
+
+#iconIMG{
+    width: 10%;
+
+}
 /* Reset style for HTML element on active to have no border*/
 input:focus,
 select:focus,
@@ -150,7 +164,7 @@ button:focus {
 
 @media only screen and (min-width: 1650px){
     body{
-        height: 90vh;
+        height: 100vh;
     }
     #app {
         display: block;
@@ -159,14 +173,10 @@ button:focus {
         align-self: end;
     }
     #container{
-        // display: grid;
-        // grid-template-columns:45% 45%;
-        
-        // width: 90%;
         margin: 0 auto;
         padding: 30px 0;
         justify-content: center;
-    
+        display: block;
     }
 
     button{
@@ -200,5 +210,30 @@ button:focus {
     input{
         margin-right: 15px;
         
+    }
+    .trip-area{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+    #image{
+
+        width: 40%;
+        height: 100%;
+    }
+    img{
+
+        width: 100%;
+        height: 100%;
+    }
+    
+    #info{
+
+        width: 60%;
+        height: 100%;
+    }
+    #info p{
+        font-size: 1.2em;
     }
 }

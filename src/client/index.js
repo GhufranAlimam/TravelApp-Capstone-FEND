@@ -4,7 +4,7 @@ import img from './imgs/background.jpg';
 import './styles/style.scss'
 
 export{
-    main,
     checkLocationInput,
+    main,
     img
 }
