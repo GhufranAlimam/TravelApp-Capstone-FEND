@@ -1,10 +1,9 @@
-projectData = {};
+let projectData = {};
 const path = require('path')
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-// const fetch = require('node-fetch');
 const dotenv = require('dotenv');
 dotenv.config({path:path.join(__dirname,'../.env')});
 
@@ -23,7 +22,7 @@ app.get('/trip', (req, res) =>{
 })
 
 app.post('/trip', (req,res) =>{
-    console.log(projectData)
+    console.log(req.body)
     projectData = {
         city: req.body.city,
         temp: req.body.temp,
@@ -36,10 +35,13 @@ app.post('/trip', (req,res) =>{
     }
     res.send({
         success: true,
-        message: "data is saved",
+        message: "Data are received properly",
         data: projectData
     })
 })
+
 app.listen(PORT,()=>{
     console.log(`server is running on port: ${PORT}`)
 })
+
+module.exports = { app };

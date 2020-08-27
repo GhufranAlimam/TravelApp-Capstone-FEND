@@ -16,9 +16,8 @@ function main(event){
     tripInfo.location = location;
     tripInfo.startDate = startDateDash;
     tripInfo.endDate = endDateDash;
-    console.log(location, startDate, endDate);
     const geoURL = `http://api.geonames.org/searchJSON?formatted=true&q=${location}&username=ghufran&style=full`;
-    getGeoData(geoURL) //removed location to test object
+    getGeoData(geoURL) 
     checkDate(startDate, endDate)
     pixabayData()
 }
@@ -27,7 +26,6 @@ const getGeoData = (geoURL) =>{
     fetch(geoURL)
     .then(res => res.json())
     .then(data => {
-        console.log(data)
         const geoLatitude = data.geonames[0].lat;
         const geoLongitude = data.geonames[0].lng;
         const geoCountryCode = data.geonames[0].countryCode; //'FR'
@@ -35,8 +33,7 @@ const getGeoData = (geoURL) =>{
         tripInfo.geoLatitude = geoLatitude;
         tripInfo.geoLongitude = geoLongitude;
         tripInfo.geoCountryName = geoCountryName;
-        console.log(geoLatitude,geoLongitude, geoCountryCode, geoCountryName);
-        getWeatherbitData() //getWeatherbitData(geoLatitude, geoLongitude)
+        getWeatherbitData() 
         return data;
     })
     .catch(error => console.log(error))
@@ -55,8 +52,6 @@ const checkDate = (start, end) =>{
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // display number of days
     tripInfo.diffDays = diffDays;
     tripInfo.diffTime = diffTime;
-    console.log(diffTime + " milliseconds");
-    console.log(diffDays + " days");
 }
 
 const getWeatherbitData = () => {
@@ -65,10 +60,6 @@ const getWeatherbitData = () => {
     fetch(weatherbitURL)
     .then(res => res.json())
     .then(data => {
-        console.log(data.data[0].temp);
-        console.log(data.data[0].app_temp);
-        console.log(data.data[0].weather.description); // add description 
-        console.log(data.data[0].weather.icon);
         const temp = data.data[0].temp;
         const description = data.data[0].weather.description;
         const futureTemp = data.data[0].app_temp;
@@ -82,7 +73,7 @@ const getWeatherbitData = () => {
         img.setAttribute('src', `https://www.weatherbit.io/static/img/icons/${iconID}.png`);
         img.setAttribute('id', `iconIMG`);
         imgIcon.appendChild(img);
-        updateUI() //updateUI(location, geoCountryName) // second place // lag in calling // fix it
+        updateUI() 
         return data;
     })
     .catch(error => console.log(error))
@@ -95,12 +86,9 @@ const pixabayData = ()=> {
    .then(res => res.json())
    .then(data => {
         const imgCon = document.querySelector("div #image");
-        console.log(data)
-        console.log(data.hits[0].largeImageURL)
-        let img = document.createElement('img')
+        let img = document.createElement('img');
         img.setAttribute('src', data.hits[0].largeImageURL);
-        console.log(img)
-        imgCon.appendChild(img)
+        imgCon.appendChild(img);
         return data;
    })
    .catch(error => console.log(error))
@@ -120,8 +108,7 @@ const updateUI = () => {
     sectiontwo.innerHTML = `
         <p>Typical weather for then is: <span id="description">${tripInfo.description} throughout the day.</span></p>
     `
-    console.log(section)
-    console.log(infoSection)
+
     infoSection.appendChild(section);
     infoSection.appendChild(sectiontwo);
 
