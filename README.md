@@ -1,6 +1,8 @@
 # TravelApp-Capstone-FEND
 This's the fifth and last project in the Fron End Nanodegree at Udacity. TThe project requires you to build out a travel app that, at a minimum, obtains a desired trip location & date from the user, and displays weather and an image of the location using information obtained from external APIs.
 
+![Travel App Capstone project](capstone.gif)
+
 <br />
 
 ## Table of Contents
